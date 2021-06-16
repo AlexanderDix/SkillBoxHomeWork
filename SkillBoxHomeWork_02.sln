@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillBoxHomeWork_02", "SkillBoxHomeWork_02\SkillBoxHomeWork_02.csproj", "{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0EA1D44-069F-4500-8598-4476E36C6C91}
+	EndGlobalSection
+EndGlobal
