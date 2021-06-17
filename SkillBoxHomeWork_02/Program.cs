@@ -18,49 +18,19 @@ namespace SkillBoxHomeWork_02
             string nameFirst = Console.ReadLine();
 
             Console.WriteLine("Введите Ваш полный возраст: ");
-            int ageFirst = Convert.ToInt32(Console.ReadLine());
-
-            if (ageFirst <= 0) // Проверяем веденный возраст
-            {
-                Console.WriteLine("Ваш возраст не может быть отрицательным");
-                ageFirst = Convert.ToInt32(Console.ReadLine());
-            }
+            int ageFirst = CheckInputNumber();
 
             Console.WriteLine("Введите Ваш рост, в сантиметрах: ");
-            int growthFirst = Convert.ToInt32(Console.ReadLine());
-
-            if (growthFirst <= 0) // Проверяем введенный рост
-            {
-                Console.WriteLine("Ваш рост не может быть отрицательным");
-                growthFirst = Convert.ToInt32(Console.ReadLine());
-            }
+            int growthFirst = CheckInputNumber();
 
             Console.WriteLine("Введите Ваши баллы по русскому языку: ");
-            int scoresRussianLanguageFirst = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresRussianLanguageFirst > 100 || scoresRussianLanguageFirst < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresRussianLanguageFirst = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresRussianLanguageFirst = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по истории: ");
-            int scoresHistoryFirst = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresHistoryFirst > 100 || scoresHistoryFirst < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresHistoryFirst = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresHistoryFirst = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по математике: ");
-            int scoresMathFirst = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresMathFirst > 100 || scoresMathFirst < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresMathFirst = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresMathFirst = CheckInputScores();
 
             Console.Clear(); // Очищаем консоль
 
@@ -74,49 +44,19 @@ namespace SkillBoxHomeWork_02
             string nameSecond = Console.ReadLine();
 
             Console.WriteLine("Введите Ваш полный возраст: ");
-            int ageSecond = Convert.ToInt32(Console.ReadLine());
-
-            if (ageSecond <= 0) // Проверяем веденный возраст
-            {
-                Console.WriteLine("Ваш возраст не может быть отрицательным");
-                ageSecond = Convert.ToInt32(Console.ReadLine());
-            }
+            int ageSecond = CheckInputNumber();
 
             Console.WriteLine("Введите Ваш рост, в сантиметрах: ");
-            double growthSecond = Convert.ToDouble(Console.ReadLine());
-
-            if (growthSecond <= 0) // Проверяем введенный рост
-            {
-                Console.WriteLine("Ваш рост не может быть отрицательным");
-                growthSecond = Convert.ToInt32(Console.ReadLine());
-            }
+            double growthSecond = CheckInputNumber();
 
             Console.WriteLine("Введите Ваши баллы по русскому языку: ");
-            int scoresRussianLanguageSecond = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresRussianLanguageSecond > 100 || scoresRussianLanguageSecond < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresRussianLanguageSecond = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresRussianLanguageSecond = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по истории: ");
-            int scoresHistorySecond = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresHistorySecond > 100 || scoresHistorySecond < 0)
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresHistorySecond = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresHistorySecond = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по математике: ");
-            int scoresMathSecond = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresMathSecond > 100 || scoresMathSecond < 0)
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresMathSecond = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresMathSecond = CheckInputScores();
 
             Console.Clear(); // Очищаем консоль
 
@@ -130,49 +70,19 @@ namespace SkillBoxHomeWork_02
             string nameThird = Console.ReadLine();
 
             Console.WriteLine("Введите Ваш возраст: ");
-            int ageThird = Convert.ToInt32(Console.ReadLine());
-
-            if (ageThird <= 0) // Проверяем веденный возраст
-            {
-                Console.WriteLine("Ваш возраст не может быть отрицательным");
-                ageThird = Convert.ToInt32(Console.ReadLine());
-            }
+            int ageThird = CheckInputNumber();
 
             Console.WriteLine("Введите Ваш рост: ");
-            double growthThird = Convert.ToDouble(Console.ReadLine());
-
-            if (growthThird <= 0) // Проверяем введенный рост
-            {
-                Console.WriteLine("Ваш рост не может быть отрицательным");
-                growthThird = Convert.ToInt32(Console.ReadLine());
-            }
+            int growthThird = CheckInputNumber();
 
             Console.WriteLine("Введите Ваши баллы по русскому языку: ");
-            int scoresRussianLanguageThird = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresRussianLanguageThird > 100 || scoresRussianLanguageThird < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresRussianLanguageThird = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresRussianLanguageThird = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по истории: ");
-            int scoresHistoryThird = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresHistoryThird > 100 || scoresHistoryThird < 0)
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresHistoryThird = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresHistoryThird = CheckInputScores();
 
             Console.WriteLine("Введите Ваши баллы по математике: ");
-            int scoresMathThird = Convert.ToInt32(Console.ReadLine());
-
-            if (scoresMathThird > 100 || scoresMathThird < 0) // Проверка баллов
-            {
-                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
-                scoresMathThird = Convert.ToInt32(Console.ReadLine());
-            }
+            int scoresMathThird = CheckInputScores();
 
             Console.Clear(); // Очищаем консоль
 
@@ -257,6 +167,60 @@ namespace SkillBoxHomeWork_02
             #endregion
 
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Просим ввести пользователя число, пока она не будет в нужном формате
+        /// </summary>
+        /// <returns>Возвращает число</returns>
+        public static int CheckInputNumber()
+        {
+            // Получаем пользовательский ввод
+            var userInput = Console.ReadLine();
+
+            // Проверяем ввод на наличие лишних символов
+            if (!int.TryParse(userInput, out var number))
+            {
+                Console.WriteLine("Данные введены некорректно");
+                return CheckInputNumber();
+            }
+
+            // Проверяем число на отрицательность
+            if (number <= 0)
+            {
+                Console.WriteLine("Число не должно быть отрицательным");
+                return CheckInputNumber();
+            }
+
+            // Возвращаем число
+            return number;
+        }
+
+        /// <summary>
+        /// Просим ввести пользователя балл за предмет, пока он не будет в нужно формате
+        /// </summary>
+        /// <returns>Возвращаем балл за предмет</returns>
+        public static int CheckInputScores()
+        {
+            // Получаем пользовательский ввод
+            var userInput = Console.ReadLine(); 
+
+            // Проверяем ввод на наличие лишних символов
+            if (!int.TryParse(userInput, out var score)) 
+            {
+                Console.WriteLine("Данные введены некорректно");
+                return CheckInputScores();
+            }
+
+            // Проверяем число на нахождение в диапазоне
+            if (score > 100 || score < 0)
+            {
+                Console.WriteLine("Ваши баллы должны находиться в диапазоне от нуля до ста");
+                return CheckInputScores();
+            }
+
+            // Возвращаем балл
+            return score; 
         }
     }
 }
