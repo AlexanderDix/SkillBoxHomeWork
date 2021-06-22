@@ -9,7 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HomeWork_02", "HomeWork_02"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HomeWork_03", "HomeWork_03", "{CBED44BB-82B9-46D3-9E65-F3C759BDF587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_03", "HomeWork_03\HomeWork_03.csproj", "{B1174DA5-CF05-45A8-BC78-1B7A153EE193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_03", "HomeWork_03\HomeWork_03.csproj", "{B1174DA5-CF05-45A8-BC78-1B7A153EE193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HomeWork_04", "HomeWork_04", "{15EE7544-4E2A-4286-AE64-370E65BFDF59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_04", "HomeWork_04\HomeWork_04.csproj", "{7EC65261-683A-4099-BE49-59461C206E4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{B1174DA5-CF05-45A8-BC78-1B7A153EE193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1174DA5-CF05-45A8-BC78-1B7A153EE193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1174DA5-CF05-45A8-BC78-1B7A153EE193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC65261-683A-4099-BE49-59461C206E4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC65261-683A-4099-BE49-59461C206E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC65261-683A-4099-BE49-59461C206E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC65261-683A-4099-BE49-59461C206E4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CCEBC858-BCAD-4027-9A5C-ADF0956E1C84} = {8D8B9C33-9D91-431E-A87D-8899D9EAB83D}
 		{B1174DA5-CF05-45A8-BC78-1B7A153EE193} = {CBED44BB-82B9-46D3-9E65-F3C759BDF587}
+		{7EC65261-683A-4099-BE49-59461C206E4E} = {15EE7544-4E2A-4286-AE64-370E65BFDF59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0EA1D44-069F-4500-8598-4476E36C6C91}
