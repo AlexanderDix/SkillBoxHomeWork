@@ -71,7 +71,6 @@ namespace HomeWork_03
         public static int CheckInputUser()
         {
             var userInput = Console.ReadLine();
-            int number;
 
             if (userInput == "exit")
             {
@@ -84,18 +83,14 @@ namespace HomeWork_03
                 return CheckInputUser();
             }
 
+            var checkInput = int.TryParse(userInput, out var number);
+
             // Если просить пользователя ввести новые данные внутри цикла
             // То логика штрафов в методе UserTryInput не срабатывает
             // Поэтому остановился на break
-            while (!int.TryParse(userInput, out number))
+            while (!checkInput || number < 0)
             {
                 Console.WriteLine("Данные введены некорректно");
-                break;
-            }
-
-            while (number < 0)
-            {
-                Console.WriteLine("Не указывайте отрицательные значения");
                 break;
             }
 
@@ -150,7 +145,6 @@ namespace HomeWork_03
         public static string[] InputUserNames(int count)
         {
             Console.WriteLine("Введите имена игроков");
-            //userNames = new string[count];
 
             for (int i = 0; i < count; i++)
             {
