@@ -67,20 +67,19 @@ namespace HomeWork_03
         /// Проверяем ввод пользователя на лишние символы.
         /// А также на "exit" если пользователь хочет выйти.
         /// </summary>
-        /// <returns>Возращаем введеное число пользователя</returns>
+        /// <returns>Возвращаем введенное число пользователя</returns>
         public static int CheckInputUser()
         {
             var userInput = Console.ReadLine();
 
-            if (userInput == "exit")
+            switch (userInput)
             {
-                Environment.Exit(0);
-            }
-
-            if (userInput == "help")
-            {
-                Help();
-                return CheckInputUser();
+                case "exit":
+                    Environment.Exit(0);
+                    break;
+                case "help":
+                    Help();
+                    break;
             }
 
             var checkInput = int.TryParse(userInput, out var number);
@@ -105,36 +104,34 @@ namespace HomeWork_03
         /// <returns>Возвращаем число</returns>
         public static int UserTryInput(string userName)
         {
-            var input = CheckInputUser();
-
-            // Проверяем ввод на нахождение в заданом диапазоне
-            var checkInput = input <= maxValueTry && input >= minValueTry;
-
-            // Проверяем gameNumber с максимально возможным вводом для пользователей
-            // Также проверяем ввод пользователя, и при совпадении запрещаем вводить
-            var check = gameNumber == maxValueTry && input == maxValueTry;
-
-            if (!checkInput || check)
+            while (true)
             {
-                if (countTryUser < countTry)
+                var input = CheckInputUser();
+
+                // Проверяем ввод на нахождение в заданном диапазоне
+                var checkInput = input <= maxValueTry && input >= minValueTry;
+
+                // Проверяем gameNumber с максимально возможным вводом для пользователей
+                // Также проверяем ввод пользователя, и при совпадении запрещаем вводить
+                var check = gameNumber == maxValueTry && input == maxValueTry;
+
+                if (!checkInput || check)
                 {
-                    countTryUser++;
-                    Console.WriteLine($"{userName}, введите верное число или будете оштрафованы");
-                    return UserTryInput(userName);
-                }
-                else
-                {
+                    if (countTryUser < countTry)
+                    {
+                        countTryUser++;
+                        Console.WriteLine($"{userName}, введите верное число или будете оштрафованы");
+                        continue;
+                    }
+
                     Console.WriteLine($"{userName}, вы оштрафованы");
                     countTryUser = 0;
                     return 0;
                 }
-            }
-            else
-            {
-                countTryUser = 0;
-            }
 
-            return input;
+                countTryUser = 0;
+                return input;
+            }
         }
 
         /// <summary>
@@ -155,7 +152,8 @@ namespace HomeWork_03
                 if (input == "Computer")
                 {
                     Console.WriteLine("Это имя нельзя использовать");
-                    return InputUserNames(count);
+                    i--;
+                    continue;
                 }
 
                 userNames[i] = input;
@@ -206,27 +204,30 @@ namespace HomeWork_03
         /// </summary>
         public static void DifficultySelection()
         {
-            var easyGame = "1 - легкая \n";
-            var mediumGame = "2 - средняя \n";
-            var hardGame = "3 - сложная \n";
-
-            Console.WriteLine($"Выберите сложность игры: \n {easyGame} {mediumGame} {hardGame}");
-            var numberDifficulty = CheckInputUser();
-
-            switch (numberDifficulty)
+            while (true)
             {
-                case 1:
-                    EasyDifficultyGame();
-                    break;
-                case 2:
-                    MediumDifficultyGame();
-                    break;
-                case 3:
-                    HardDifficultyGame();
-                    break;
-                default:
-                    DifficultySelection();
-                    break;
+                var easyGame = "1 - легкая \n";
+                var mediumGame = "2 - средняя \n";
+                var hardGame = "3 - сложная \n";
+
+                Console.WriteLine($"Выберите сложность игры: \n {easyGame} {mediumGame} {hardGame}");
+                var numberDifficulty = CheckInputUser();
+
+                switch (numberDifficulty)
+                {
+                    case 1:
+                        EasyDifficultyGame();
+                        break;
+                    case 2:
+                        MediumDifficultyGame();
+                        break;
+                    case 3:
+                        HardDifficultyGame();
+                        break;
+                    default:
+                        continue;
+                }
+                //break;
             }
         }
 
@@ -321,19 +322,22 @@ namespace HomeWork_03
         /// </summary>
         public static void ManyPlayers()
         {
-            Console.WriteLine("Укажите количество игроков, больше двух");
-            countUsers = CheckInputUser();
-
-            if (countUsers <= 2)
+            while (true)
             {
-                ManyPlayers();
+                Console.WriteLine("Укажите количество игроков, больше двух");
+                countUsers = CheckInputUser();
+
+                if (countUsers <= 2)
+                {
+                    continue;
+                }
+
+                userNames = new string[countUsers];
+
+                InputUserNames(countUsers);
+
+                DifficultySelection();
             }
-
-            userNames = new string[countUsers];
-
-            InputUserNames(countUsers);
-
-            DifficultySelection();
         }
 
         /// <summary>
@@ -376,25 +380,27 @@ namespace HomeWork_03
         /// </summary>
         public static void SelectingGameMode()
         {
-            var modes = "1 - Два игрока \n 2 - Несколько игроков \n 3 - Игра с компюьтером";
-
-            Console.WriteLine($"Выберите режим игры: \n {modes}");
-            var selectMode = CheckInputUser();
-
-            switch (selectMode)
+            while (true)
             {
-                case 1:
-                    TwoPlayers();
-                    break;
-                case 2:
-                    ManyPlayers();
-                    break;
-                case 3:
-                    PlayingWithCoumputer();
-                    break;
-                default:
-                    SelectingGameMode();
-                    break;
+                var modes = "1 - Два игрока \n 2 - Несколько игроков \n 3 - Игра с компюьтером";
+
+                Console.WriteLine($"Выберите режим игры: \n {modes}");
+                var selectMode = CheckInputUser();
+
+                switch (selectMode)
+                {
+                    case 1:
+                        TwoPlayers();
+                        break;
+                    case 2:
+                        ManyPlayers();
+                        break;
+                    case 3:
+                        PlayingWithCoumputer();
+                        break;
+                    default:
+                        continue;
+                }
             }
         }
 
