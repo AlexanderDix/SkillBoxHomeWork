@@ -211,9 +211,10 @@ namespace HomeWork_04
                 var programOne = "1 - Приложение по учету финансов \n";
                 var programTwo = "2 - Приложение строящее N строк треугольника Паскаля \n";
                 var programThree = "3 - Приложение по работе с матрицами \n";
-                var programExit = "4 - Завершить работу";
+                var programFour = "4 - Приложение по расчету минимального количества умножений \n";
+                var programExit = "5 - Завершить работу";
 
-                var printScreen = $" {programOne} {programTwo} {programThree} {programExit}";
+                var printScreen = $" {programOne} {programTwo} {programThree} {programFour} {programExit}";
 
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Выберите какую программу вывести на экран:");
@@ -238,6 +239,10 @@ namespace HomeWork_04
                         CalculationMatrices();
                         break;
                     case 4:
+                        Console.Clear();
+                        ProgramMatrixChainOrder();
+                        break;
+                    case 5:
                         Environment.Exit(0);
                         break;
                     default:
@@ -474,10 +479,9 @@ namespace HomeWork_04
         {
             InputMatrix();
 
-            var checkMatrixFirst = _matrixA.GetLength(0) != _matrixB.GetLength(1);
-            var checkMatrixSecond = _matrixA.GetLength(1) != _matrixB.GetLength(0);
+            var checkMatrixFirst = _matrixA.GetLength(1) != _matrixB.GetLength(0);
 
-            if (checkMatrixFirst || checkMatrixSecond)
+            if (checkMatrixFirst)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Количество столбцов матрицы A, должно быть равно количеству строк матрицы B");
@@ -561,6 +565,86 @@ namespace HomeWork_04
             BackMenu();
 
             CalculationMatrices();
+        }
+
+        /// <summary>
+        /// Метод вывода информации об оптимальном перемножении матриц
+        /// </summary>
+        public static void ProgramMatrixChainOrder()
+        {
+            int[] array = new[] {10, 100, 5, 50};
+            int size = array.Length;
+
+            var matrixMultiplicationFirst = MatrixChainOrder(array, size);
+
+            array = new[] {10, 30, 5, 60};
+            size = array.Length;
+
+            var matrixMultiplicationSecond = MatrixChainOrder(array, size);
+
+            Console.WriteLine("Три матрицы размерами - 10x100, 100x5, 5x50 \n" +
+                              $"Минимальное количество умножений - {matrixMultiplicationFirst} \n");
+
+            Console.WriteLine("Три матрицы размерами - 10x30, 30x5, 5x60 \n" +
+                              $"Минимальное количество умножений - {matrixMultiplicationSecond} \n");
+
+            BackMenu();
+
+            ChoiceProgram();
+        }
+
+        /// <summary>
+        /// Возвращает ответ на задачу об оптимальном перемножении матриц,
+        /// используя динамическое программирование
+        /// </summary>
+        /// <param name="p">Массив размеров матриц</param>
+        /// <param name="n">Длина массива размеров матриц</param>
+        /// <returns>Минимальное количество скалярных умножений</returns>
+        public static int MatrixChainOrder(int[] p, int n)
+        {
+            int[,] m = new int[n, n];
+            int i, j, k, L, q;
+
+            /*
+             * m[i, j] = минимальное количество скалярных
+             * умножений, необходимых для вычисления матрицы
+             * A[i] A[i + 1]... A[j] = A[i..j], где размерность
+             * A[i] = p[i - 1] * p[i]
+             */
+
+            // Стоимость равна нулю при умножении одной матрицы
+            for (i = 1; i < n; i++)
+            {
+                m[i, i] = 0;
+            }
+
+            // L - длина цепочки
+            for (L = 2; L < n; L++)
+            {
+                for (i = 1; i < n - L + 1; i++)
+                {
+                    j = i + L - 1;
+                    if (j == n)
+                    {
+                        continue;
+                    }
+
+                    m[i, j] = int.MaxValue;
+                    for (k = i; k <= j - 1; k++)
+                    {
+                        // q = стоимость/скалярное умножение
+                        q = m[i, k] + m[k + 1, j] 
+                                    + p[i - 1] * p[k] * p[j];
+
+                        if (q < m[i, j])
+                        {
+                            m[i, j] = q;
+                        }
+                    }
+                }
+            }
+
+            return m[1, n - 1];
         }
     }
 }
