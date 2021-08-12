@@ -35,5 +35,26 @@ namespace HomeWork_05
             Console.WriteLine(text);
             Console.ResetColor();
         }
+
+        /// <summary>
+        /// Вывод текста без переноса на новую строку
+        /// </summary>
+        /// <param name="text">Текст, который нужно вывести</param>
+        public static void NoEnterText(string text)
+        {
+            Console.Write(text);
+        }
+
+        /// <summary>
+        /// Вывод цветного текста без переноса на новую строку
+        /// </summary>
+        /// <param name="text">Текст, который нужно вывести</param>
+        /// <param name="color">Цвет выводимого текста</param>
+        public static void NoEnterText(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(text);
+            Console.ResetColor();
+        }
     }
 }

@@ -29,8 +29,10 @@ namespace HomeWork_05
                 var matrixAddition = "1 - Сложение матриц \n";
                 var matrixSubtraction = "2 - Вычитание матриц \n";
                 var matrixMultiplication = "3 - Умножение матриц \n";
-                var matrixMultiByNumber = "4 - Умножение матрицы на число ";
-                var printScreen = $" {matrixAddition} {matrixSubtraction} {matrixMultiplication} {matrixMultiByNumber}";
+                var matrixMultiByNumber = "4 - Умножение матрицы на число \n";
+                var backMainMenu = "5 - Назад в главное меню \n";
+                var exitText = "6 - Выйти";
+                var printScreen = $" {matrixAddition} {matrixSubtraction} {matrixMultiplication} {matrixMultiByNumber} {backMainMenu} {exitText}";
 
                 Print.Text("Выберите, что нужно сделать с матрицей", ConsoleColor.DarkCyan);
                 Print.Text(printScreen);
@@ -51,9 +53,15 @@ namespace HomeWork_05
                     case 4:
                         InputMatrix();
                         break;
+                    case 5:
+                        Program.ChoiceProgram();
+                        break;
+                    case 6:
+                        Environment.Exit(0);
+                        break;
                     default:
                         Print.Text("Такого пункта нет \n", ConsoleColor.DarkRed);
-                        break;
+                        continue;
                 }
                 break;
             }
