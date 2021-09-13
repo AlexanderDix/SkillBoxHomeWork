@@ -4,13 +4,11 @@ namespace HomeWork_07
 {
     class Program
     {
-        static void Main()
+        private static void Main()
         {
-            string path = "note.csv";
-            string pathTest = "note.diary";
+            const string path = "note.csv";
 
-            Repository repOne = new(path);
-            Repository repTwo = new(pathTest);
+            Diary repOne = new(path);
 
             repOne.PrintToConsole();
 
