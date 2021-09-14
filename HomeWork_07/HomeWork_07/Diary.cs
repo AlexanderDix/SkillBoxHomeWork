@@ -4,7 +4,7 @@ using System.IO;
 
 namespace HomeWork_07
 {
-    struct Diary
+    class Diary
     {
         #region Fields
 
@@ -32,9 +32,9 @@ namespace HomeWork_07
 
         #region Constructors
 
-        public Diary(string Path)
+        public Diary(string path)
         {
-            _path = Path;
+            _path = path;
             _index = 0;
             _titles = Array.Empty<string>();
             _notes = new List<Note>();
@@ -52,10 +52,10 @@ namespace HomeWork_07
         private void FileExists()
         {
             if (File.Exists(_path)) return;
-            Print.Text($"Файла {_path} не существует. Создание файла.", ConsoleColor.DarkRed);
+            InputOutput.Text($"Файла {_path} не существует. Создание файла.", ConsoleColor.DarkRed);
 
             using StreamWriter sWriter = new(new FileStream(_path, FileMode.Create, FileAccess.Write));
-            const string temp = "GUID,Title,Author,DateCreate,Content,Importance";
+            const string temp = "Title,Author,DateCreate,Content,Importance";
 
             sWriter.WriteLine(temp);
         }
@@ -74,26 +74,33 @@ namespace HomeWork_07
             {
                 var data = sReader.ReadLine().Split(',');
 
-                AddNote(new Note(data[1], data[2], Convert.ToDateTime(data[3]), data[4], data[5]));
+                AddNote(new Note(
+                    data[1],
+                    data[2],
+                    Convert.ToDateTime(data[3]),
+                    data[4],
+                    data[5]));
             }
         }
 
         /// <summary>
-        /// Сохранение данных в файл
+        /// Сохранение записи
         /// </summary>
+        /// <param name="path">Путь</param>
         public void Save(string path)
         {
-            var temp = $"{_titles[0]},{_titles[1]},{_titles[2]},{_titles[3]},{_titles[4]},{_titles[5]}";
+            File.Delete(path);
+
+            var temp = $"{_titles[0]},{_titles[1]},{_titles[2]},{_titles[3]},{_titles[4]}";
 
             File.AppendAllText(path, $"{temp}\n");
 
-            for (int i = 0; i < _index; i++)
+            for (var i = 0; i < _index; i++)
             {
                 temp =
-                    $"{_notes[i].GUID}," +
                     $"{_notes[i].Title}," +
                     $"{_notes[i].Author}," +
-                    $"{_notes[i].DateCreate}," +
+                    $"{_notes[i].DateCreate.ToShortDateString()}," +
                     $"{_notes[i].Content}," +
                     $"{_notes[i].Importance}";
 
@@ -101,8 +108,10 @@ namespace HomeWork_07
             }
         }
 
+        #region Добавление записи
+
         /// <summary>
-        /// Добавление записи в массив
+        /// Добавление записи в коллекцию при выгрузки из файла
         /// </summary>
         /// <param name="note">Запись</param>
         public void AddNote(Note note)
@@ -111,11 +120,39 @@ namespace HomeWork_07
             _index++;
         }
 
+        #endregion
+
+        /// <summary>
+        /// Удаление записи
+        /// </summary>
+        /// <param name="indexNote">Индекс записи</param>
+        public void DeleteNote(int indexNote)
+        {
+            _notes.RemoveAt(indexNote);
+            _index--;
+        }
+
+        /// <summary>
+        /// Редактирование записей
+        /// </summary>
+        /// <param name="indexNote">Индекс</param>
+        /// <param name="note">Запись</param>
+        public void EditNote(int indexNote, Note note)
+        {
+            _notes.RemoveAt(indexNote);
+
+            _notes.Insert(indexNote, note);
+        }
+
+        /// <summary>
+        /// Вывод записей на консоль
+        /// </summary>
         public void PrintToConsole()
         {
             for (var i = 0; i < _index; i++)
             {
-                Print.Text(_notes[i].Print());
+                Console.WriteLine($"Номер записи: {i} \n" +
+                                  $"{_notes[i].Print()}");
             }
         }
 
