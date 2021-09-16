@@ -36,7 +36,22 @@ namespace HomeWork_07
             Console.WriteLine($"{header}");
             Console.ResetColor();
 
-            return Console.ReadLine();
+            return Input();
+        }
+
+        /// <summary>
+        /// Просим пользователя ввести данные
+        /// </summary>
+        /// <returns>Возвращаем строку</returns>
+        public static string Input()
+        {
+            while (true)
+            {
+                var input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input)) return input;
+                Text("Данные введены не корректно", ConsoleColor.DarkRed);
+            }
         }
 
         /// <summary>
