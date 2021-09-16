@@ -49,7 +49,7 @@ namespace HomeWork_07
             {
                 var input = Console.ReadLine();
 
-                if (!string.IsNullOrWhiteSpace(input)) return input;
+                if (!string.IsNullOrWhiteSpace(input)) return input.Replace(",", "");
                 Text("Данные введены не корректно", ConsoleColor.DarkRed);
             }
         }
