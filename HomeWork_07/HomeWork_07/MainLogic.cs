@@ -11,6 +11,11 @@ namespace HomeWork_07
 
         private static readonly Diary Diary = new(Path);
 
+        public static void GenerateFile()
+        {
+            Diary.GeneratingFiles();
+        }
+
         /// <summary>
         /// Добавление новой записи
         /// </summary>

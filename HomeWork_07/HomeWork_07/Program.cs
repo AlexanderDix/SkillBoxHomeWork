@@ -6,6 +6,8 @@ namespace HomeWork_07
     {
         private static void Main()
         {
+            MainLogic.GenerateFile();
+
             ChoiceMenu();
         }
 
@@ -72,7 +74,6 @@ namespace HomeWork_07
                         InputOutput.Text("Такого пункта нет", ConsoleColor.DarkRed);
                         continue;
                 }
-
                 break;
             }
         }

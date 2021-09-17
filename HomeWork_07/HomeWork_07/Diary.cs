@@ -55,17 +55,28 @@ namespace HomeWork_07
         #region Methods
 
         /// <summary>
-        /// Проверка существования файла
+        /// Генерация файла при отсутствии
         /// </summary>
-        private void FileExists()
+        public void GeneratingFiles()
         {
+            const string tempTitle = "Title,Author,DateCreate,Content,Importance";
+
             if (File.Exists(_path)) return;
             InputOutput.Text($"Файла {_path} не существует. Создание файла.", ConsoleColor.DarkRed);
-
+            
             using StreamWriter sWriter = new(new FileStream(_path, FileMode.Create, FileAccess.Write));
-            const string temp = "Title,Author,DateCreate,Content,Importance";
+            sWriter.WriteLine(tempTitle);
 
-            sWriter.WriteLine(temp);
+            for (var i = 0; i < 10; i++)
+            {
+                var temp = $"Title {i}," +
+                           $"Author {i}," +
+                           $"{DateTime.Now.AddDays(i)}," +
+                           $"Content {i}," +
+                           $"Low {i}";
+
+                sWriter.WriteLine(temp);
+            }
         }
 
         /// <summary>
@@ -73,7 +84,7 @@ namespace HomeWork_07
         /// </summary>
         private void Load()
         {
-            FileExists();
+            GeneratingFiles();
 
             using StreamReader sReader = new(_path);
             _titles = sReader.ReadLine().Split(',');
@@ -106,9 +117,9 @@ namespace HomeWork_07
             File.Delete(path);
             _dates.Clear();
 
-            var temp = $"{_titles[0]},{_titles[1]},{_titles[2]},{_titles[3]},{_titles[4]}";
+            var temp = $"{_titles[0]},{_titles[1]},{_titles[2]},{_titles[3]},{_titles[4]}\n";
 
-            File.AppendAllText(path, $"{temp}\n");
+            File.AppendAllText(path, temp);
 
             for (var i = 0; i < _index; i++)
             {
@@ -124,9 +135,9 @@ namespace HomeWork_07
                     $"{_notes[i].Author}," +
                     $"{_notes[i].DateCreate.ToShortDateString()}," +
                     $"{_notes[i].Content}," +
-                    $"{_notes[i].Importance}";
+                    $"{_notes[i].Importance}\n";
 
-                File.AppendAllText(path, $"{temp}\n");
+                File.AppendAllText(path, temp);
             }
         }
 
