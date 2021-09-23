@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace HomeWork_08
 {
@@ -6,7 +8,7 @@ namespace HomeWork_08
     {
         static void Main(string[] args)
         {
-
+            Menu.Choice();
         }
     }
 }
